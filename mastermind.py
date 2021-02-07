@@ -62,7 +62,7 @@ def no_first(final_guess,correct_numbers,numbers,headers):
   print('DIDNT FIND FIRST')
   if len(correct_numbers) == 1:
     now_sort(final_guess,correct_numbers,numbers,headers)
-  else:
+
 
 
 def now_sort(final_guess,correct_numbers,numbers,headers):
@@ -73,8 +73,6 @@ def now_sort(final_guess,correct_numbers,numbers,headers):
       final_guess.append(correct_numbers)
     elif response == [2,1]:
       response = guess([num]+ correct_numbers +[8,9],headers)
-
-    elif response == [2,0]
 
 def found_second(final_guess,correct_numbers,numbers,headers):
   print('FOUND SECOND')
