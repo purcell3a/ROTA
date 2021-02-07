@@ -18,7 +18,7 @@ def next_level(headers):
 
   final_guess = []
   correct_numbers = []
-  numbers = [0,1,2,3,4,5,6]
+  numbers = [0,1,2,3,4,5]
 
   # ************************************************
   for num in numbers[0:3]:
