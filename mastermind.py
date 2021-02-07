@@ -5,7 +5,7 @@ if sys.version_info < (3,0):
   sys.exit('Python version < 3.0 does not support modern TLS versions. You will have trouble connecting to our API using Python 2.X.')
 
 def start_game():
-  r = requests.post('https://mastermind.praetorian.com/api-auth-token/', data={'email':'othlker@lipade.com'})
+  r = requests.post('https://mastermind.praetorian.com/api-auth-token/', data={'email':'othlker@sslipade.com'})
   r.json()
   headers = r.json()
   headers['Content-Type'] = 'application/json'
@@ -76,7 +76,7 @@ def found_second(final_guess,correct_numbers,numbers,headers):
       if response == [3, 2]:
           correct_numbers.append(num)
           numbers.remove(num)
-      if response[2 ,2]:
+      if response[2, 2]:
           numbers.remove(num)
   print('SECOND',final_guess,'correct',correct_numbers,'nums',numbers)
   third_step(final_guess,correct_numbers,numbers)
