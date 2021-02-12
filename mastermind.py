@@ -1,5 +1,5 @@
 import requests, json, sys
-
+#   CARRY THE PLACEMENT DOWN LIKE WE DO WITH BINARY VALIDATION ?!?!
 
 if sys.version_info < (3,0):
   sys.exit('Python version < 3.0 does not support modern TLS versions. You will have trouble connecting to our API using Python 2.X.')
@@ -75,9 +75,7 @@ def found_second(final_guess,correct_numbers,numbers,headers):
           break
       if response == [3, 2]:
           correct_numbers.append(num)
-          numbers.remove(num)
-      if response[2, 2]:
-          numbers.remove(num)
+      numbers.remove(num)
   print('SECOND',final_guess,'correct',correct_numbers,'nums',numbers)
   third_step(final_guess,correct_numbers,numbers)
 
