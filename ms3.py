@@ -5,7 +5,7 @@ if sys.version_info < (3,0):
   sys.exit('Python version < 3.0 does not support modern TLS versions. You will have trouble connecting to our API using Python 2.X.')
 
 def start_game():
-  r = requests.post('https://mastermind.praetorian.com/api-auth-token/', data={'email':'or@sslkade.com'})
+  r = requests.post('https://mastermind.praetorian.com/api-auth-token/', data={'email':'orwasdfefgd@sslkade.com'})
   r.json()
   headers = r.json()
   headers['Content-Type'] = 'application/json'
@@ -22,15 +22,16 @@ def next_level(level,headers):
   find_numbers(headers,final_guess,correct_numbers,numbers)
   # ************************************************
 
-def find_numbers(headers,final_guess,correct_numbers,numbers,idx=0):
-
-    print('final',final_guess,'correct',correct_numbers,'numbers',numbers)
-
+def find_numbers(headers,final_guess,correct_numbers,numbers,idx=0,count=0):
+    print('first count', count)
+    # ************************************************
     noise=[7,8,9,10]
-
-    if len(numbers) > 2:
-
-        for num in numbers:
+    # ************************************************
+    
+    for num in numbers:
+        if count < 4:
+            count = count + 1
+            print('count',count)
 
             noise[idx] = num
             response = guess(noise, headers)
@@ -41,15 +42,14 @@ def find_numbers(headers,final_guess,correct_numbers,numbers,idx=0):
             if response == [1,0]:
                 correct_numbers.append(num)
             numbers.remove(num)
-            find_numbers(headers,final_guess,correct_numbers,numbers,idx)
-    else:
-        print('next function')
-    # if len(correct_numbers) > 2 and len(numbers) < 2:
-    #     sort_numbers(final_guess,correct_numbers,numbers,noise)
+            find_numbers(headers,final_guess,correct_numbers,numbers,idx,count)
+            break
+        else:
+            sort_numbers(final_guess,correct_numbers,numbers,noise)
 
 
 def sort_numbers(final_guess,correct_numbers,numbers,noise):
-    print('final',final_guess,'correct',correct_numbers,'numbers',numbers,'noise',noise)
+    print('next function')
 
 
 def guess(guess,headers):
