@@ -5,7 +5,7 @@ if sys.version_info < (3,0):
   sys.exit('Python version < 3.0 does not support modern TLS versions. You will have trouble connecting to our API using Python 2.X.')
 
 def start_game():
-  r = requests.post('https://mastermind.praetorian.com/api-auth-token/', data={'email':'oladsfshr@sslkade.com'})
+  r = requests.post('https://mastermind.praetorian.com/api-auth-token/', data={'email':'olaljhghr@sslkade.com'})
   r.json()
   headers = r.json()
   headers['Content-Type'] = 'application/json'
@@ -37,12 +37,13 @@ def next_level(level,headers):
 def found_first(final_guess,correct_numbers,numbers,headers):
   print('FOUND FIRST')
   for num in numbers[0:-1]:
-    response = guess(final_guess + [num] + [8,9],headers)
-    if response == [2, 2]:
+    response = guess([10] + [num] + [8,9],headers)
+    print('line 41',response)
+    if response == [1, 1]:
       final_guess.append(num)
       found_second(final_guess,correct_numbers,numbers,headers)
       exit()
-    if response == [2,1]:
+    if response == [1,0]:
       correct_numbers.append(num)
     numbers.remove(num)
   print('DID NOT FIND SECOND')
@@ -51,12 +52,12 @@ def found_first(final_guess,correct_numbers,numbers,headers):
 def found_second(final_guess, correct_numbers,numbers,headers):
   print('FOUND SECOND')
   for num in numbers[0:-1]:
-    response = guess(final_guess + [num] + [9],headers)
-    if response == [3, 3]:
+    response = guess([8,10] + [num] + [9],headers)
+    if response == [1, 1]:
       final_guess.append(num)
       sort_numbers(final_guess,correct_numbers,numbers,headers)
       exit()
-    if response == [3,2]:
+    if response == [1,0]:
       correct_numbers.append(num)
     numbers.remove(num)
   if len(correct_numbers + final_guess) == 4:
@@ -127,9 +128,9 @@ def right_numbers(final_guess, correct_numbers,headers):
   response = guess(final_guess + correct_numbers,headers)
   if response != [4,4]:
     response == guess(final_guess + correct_numbers[-1:0],headers)
-    print(final_guess + correct_numbers[-1:0])
+    print('line 130',final_guess + correct_numbers[-1:0])
   else:
-    print(response)
+    print('response on line 132',response)
     print('next level')
 
 

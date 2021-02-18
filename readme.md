@@ -1,7 +1,7 @@
 # Tried recursion
 
 
-   my_list = [22,33,77,22,33]
+  my_list = [22,33,77,22,33]
  my_list = [99 if i==22 else i for i in my_list]
  print(my_list)
   find_numbers(headers,first_guess,final_guess,correct_numbers,numbers)

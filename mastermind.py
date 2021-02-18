@@ -19,7 +19,7 @@ def next_level(level,headers):
   final_guess = []
   correct_numbers = []
   numbers = [0,1,2,3,4,5]
-
+  
   # ************************************************
   for num in numbers:
       response = guess([num] + [8,9,10],headers)
